@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { sumPrice } from "../../helper/helper";
+import { sumPrice, sumQuantity } from "../../helper/helper";
 
 const initialState = {
 	selectedItems: [],
@@ -38,7 +38,7 @@ const cartSlice = createSlice({
 		},
 		decrease: (state, action) => {
 			const decreaseIndex = state.selectedItems.findIndex(
-				(item) => item.id === action.payload.id
+				(i) => i.id === action.payload.id
 			);
 			state.selectedItems[decreaseIndex].quantity--;
 			state.total = sumPrice(state.selectedItems);
